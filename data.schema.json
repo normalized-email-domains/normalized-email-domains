@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/normalized-email-domains/normalized-email-domains/data.schema.json",
+
+  "title": "Normalized Email Domain",
+  "description": "A normalized email domain, including supported features.",
+  "type": "object",
+  "properties": {
+    "primaryDomain": {
+      "description": "The primary email domain, useful when a services offers multiple email domains",
+      "type": "string",
+      "format": "hostname"
+    },
+    "features": {
+      "description": "A list of supported features",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/feature"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "aliases": {
+      "description": "List of alternative email domains",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "hostname"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": [ "primaryDomain" ],
+
+  "$defs": {
+    "feature": {
+      "type": "object",
+      "description": "A used/enabled feature, including the source of the information",
+      "properties": {
+        "feature": {
+          "enum": [
+            "case-insensitive-localpart",
+            "case-sensitive-localpart",
+            "disposable-email-domain",
+            "dots-ignored",
+            "hyphens-ignored",
+            "subaddress-support"
+          ]
+        },
+        "source": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [ "feature", "source" ]
+    }
+  }
+}

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Enable bash "strict mode" (see http://redsymbol.net/articles/unofficial-bash-strict-mode/)
+set -euo pipefail
+IFS=$'\n\t'
+
+REPO_DIR_PATH=$(git rev-parse --show-toplevel)
+CHANGED_FILES=$(git diff --name-only --diff-filter=ACMRTUXB origin/main)
+
+cd "$REPO_DIR_PATH"
+
+###
+# Start linting
+
+# Code style for common files
+prettier --check .

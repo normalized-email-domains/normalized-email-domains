@@ -1,0 +1,10 @@
+{
+  "$schema": "https://github.com/normalized-email-domains/normalized-email-domains/data.schema.json",
+  "primaryDomain": "gmail.com",
+  "features": [
+    { "feature": "case-insensitive-localpart", "source": [ "https://www.businessinsider.com/guides/tech/are-gmail-addresses-case-sensitive" ] },
+    { "feature": "dots-ignored", "source": [ "https://support.google.com/mail/answer/7436150?hl=en" ] },
+    { "feature": "subaddress-support", "source": [ "https://support.google.com/a/users/answer/9282734?hl=en#email-address-variation" ] }
+  ],
+  "aliases": [ "googlemail.com" ]
+}
